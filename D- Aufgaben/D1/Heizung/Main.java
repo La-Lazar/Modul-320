@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Raum raum1 = new Raum("Küche", 22, false);
+        Raum raum1 = new Raum("Küche", 23, false);
         Raum raum2 = new Raum("Wohnzimmer", 20, true);
         Raum raum3 = new Raum("Schlafzimmer", 18, false);
         Raum raum4 = new Raum("Bad", 24, false);
@@ -27,7 +27,7 @@ public class Main {
 
     public static void PrintRaume(List<Raum> raeume){
         for (Raum raum : raeume) {
-            System.out.println(raum.Name + " " + raum.IstAngeschaltet + " " + raum.Temperatur);
+            System.out.println(raum.getName() + " " + raum.getIstAngeschaltet() + " " + raum.getTemperatur());
         }
 
         System.out.println("----------------------");
