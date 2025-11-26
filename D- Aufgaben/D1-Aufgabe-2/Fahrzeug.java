@@ -1,7 +1,7 @@
 public class Fahrzeug {
-    public String FahrzeugName;
-    public Integer Reparaturkosten;
-    public boolean IstRepariert;
+    private String FahrzeugName;
+    private Integer Reparaturkosten;
+    private boolean IstRepariert;
 
     public Fahrzeug(String fahrzeugName, Integer reparaturkosten, boolean istRepariert) {
         FahrzeugName = fahrzeugName;
@@ -9,17 +9,30 @@ public class Fahrzeug {
         IstRepariert = istRepariert;
     }
 
-    public void SetIstRepariert()
+    public void SetIstRepariert(Integer reparaturkosten)
     {
-        IstRepariert = !IstRepariert;
+        IstRepariert = reparaturkosten <= 0;
     }
 
     public void SetReparaturkosten(Integer reparaturkosten)
     {
         Reparaturkosten += reparaturkosten;
     }
+
     public void SetFahrzeugname(String fahrzeugname)
     {
         FahrzeugName = fahrzeugname;
+    }
+
+    public String getFahrzeugName() {
+        return FahrzeugName;
+    }
+
+    public Integer getReparaturkosten() {
+        return Reparaturkosten;
+    }
+
+    public boolean isIstRepariert() {
+        return IstRepariert;
     }
 }
