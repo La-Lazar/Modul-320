@@ -1,7 +1,7 @@
 public class Raum {
-    public String Name;
-    public Integer Temperatur;
-    public boolean IstAngeschaltet;
+    private String Name;
+    private Integer Temperatur;
+    private boolean IstAngeschaltet;
 
     public Raum(String name, Integer temperatur, boolean istAngeschaltet) {
         Name = name;
@@ -17,5 +17,17 @@ public class Raum {
     public void AendereTemperatur(Integer temperatur)
     {
         Temperatur += temperatur;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public Integer getTemperatur() {
+        return Temperatur;
+    }
+
+    public boolean getIstAngeschaltet() {
+        return IstAngeschaltet;
     }
 }
