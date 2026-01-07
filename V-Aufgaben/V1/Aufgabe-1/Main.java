@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -5,6 +8,12 @@ public class Main {
         Tier hund = new Hund("Bello", 5);
         Tier katze = new Katze("Mimi", 3);
         
+        List<Tier> liste = new ArrayList<>();
+        liste.add(hund);
+        liste.add(katze);
+
+        Collections.sort(liste);
+
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
         
@@ -15,7 +24,8 @@ public class Main {
             System.out.println("3. Hund Informationen");
             System.out.println("4. Katze Informationen");
             System.out.println("5. Alle Tiere vorstellen");
-            System.out.println("6. Beenden");
+            System.out.println("6. Sortierte Tierliste nach Alter");
+            System.out.println("7. Beenden");
             System.out.print("Wähle eine Option: ");
             
             int choice = scanner.nextInt();
@@ -48,6 +58,12 @@ public class Main {
                     System.out.println("Katze: " + katze.getName() + ", Alter: " + katze.getAlter() + " Jahre");
                 }
                 case 6 -> {
+                    System.out.println("=== Sortierte Tierliste nach Alter ===");
+                    for (Tier tier : liste) {
+                        System.out.println(tier);
+                    }
+                }
+                case 7 -> {
                     running = false;
                     System.out.println("Auf Wiedersehen!");
                 }
