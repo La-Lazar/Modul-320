@@ -11,6 +11,9 @@ public class Cloud
     private String color;
     private boolean isVisible;
 
+    /**
+     * Create a new cloud at default position with default color.
+     */
     public Cloud()
     {
         width = 140;
@@ -21,38 +24,60 @@ public class Cloud
         isVisible = false;
     }
 
+    /**
+     * Make this cloud visible. If it was already visible, do nothing.
+     */
     public void makeVisible()
     {
         isVisible = true;
         draw();
     }
 
+    /**
+     * Make this cloud invisible. If it was already invisible, do nothing.
+     */
     public void makeInvisible()
     {
         erase();
         isVisible = false;
     }
 
+    /**
+     * Move the cloud a few pixels to the right.
+     */
     public void moveRight()
     {
         moveHorizontal(20);
     }
 
+    /**
+     * Move the cloud a few pixels to the left.
+     */
     public void moveLeft()
     {
         moveHorizontal(-20);
     }
 
+    /**
+     * Move the cloud a few pixels up.
+     */
     public void moveUp()
     {
         moveVertical(-20);
     }
 
+    /**
+     * Move the cloud a few pixels down.
+     */
     public void moveDown()
     {
         moveVertical(20);
     }
 
+    /**
+     * Move the cloud horizontally by 'distance' pixels.
+     * @param distance the distance to move (positive for right, negative for left)
+     */
     public void moveHorizontal(int distance)
     {
         erase();
@@ -60,6 +85,10 @@ public class Cloud
         draw();
     }
 
+    /**
+     * Move the cloud vertically by 'distance' pixels.
+     * @param distance the distance to move (positive for down, negative for up)
+     */
     public void moveVertical(int distance)
     {
         erase();
@@ -67,6 +96,10 @@ public class Cloud
         draw();
     }
 
+    /**
+     * Slowly move the cloud horizontally by 'distance' pixels.
+     * @param distance the distance to move (positive for right, negative for left)
+     */
     public void slowMoveHorizontal(int distance)
     {
         int delta;
@@ -85,6 +118,10 @@ public class Cloud
         }
     }
 
+    /**
+     * Slowly move the cloud vertically by 'distance' pixels.
+     * @param distance the distance to move (positive for down, negative for up)
+     */
     public void slowMoveVertical(int distance)
     {
         int delta;
@@ -103,6 +140,11 @@ public class Cloud
         }
     }
 
+    /**
+     * Change the size to the new size (in pixels). Size must be >= 0.
+     * @param newWidth the new width of the cloud
+     * @param newHeight the new height of the cloud
+     */
     public void changeSize(int newWidth, int newHeight)
     {
         erase();
@@ -111,6 +153,11 @@ public class Cloud
         draw();
     }
 
+    /**
+     * Change the color. Valid colors are "red", "yellow", "blue", "green",
+     * "magenta", "black", "gray".
+     * @param newColor the new color of the cloud
+     */
     public void changeColor(String newColor)
     {
         color = newColor;
