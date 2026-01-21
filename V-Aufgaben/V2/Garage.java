@@ -1,9 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Garage-Klasse verwaltet eine Liste von Fahrzeugen
- */
 public class Garage {
     private List<Fahrzeug> fahrzeuge;
 
@@ -11,16 +8,11 @@ public class Garage {
         this.fahrzeuge = new ArrayList<>();
     }
 
-    /**
-     * Fahrzeug zur Garage hinzufügen
-     */
+
     public void addFahrzeug(Fahrzeug fahrzeug) {
         fahrzeuge.add(fahrzeug);
     }
 
-    /**
-     * Alle Fahrzeuge anzeigen
-     */
     public void printAlleFahrzeuge() {
         if (fahrzeuge.isEmpty()) {
             System.out.println("Die Garage ist leer.");
@@ -32,9 +24,6 @@ public class Garage {
         }
     }
 
-    /**
-     * Nach Kundennummer suchen
-     */
     public Fahrzeug sucheNachKundennummer(String kundennummer) {
         for (Fahrzeug fahrzeug : fahrzeuge) {
             if (fahrzeug.getKundennummer().equals(kundennummer)) {
@@ -44,9 +33,6 @@ public class Garage {
         return null;
     }
 
-    /**
-     * Nach Marke suchen
-     */
     public void sucheNachMarke(String marke) {
         System.out.println("========== FAHRZEUGE VON " + marke.toUpperCase() + " ==========");
         boolean found = false;
@@ -62,9 +48,6 @@ public class Garage {
         System.out.println();
     }
 
-    /**
-     * Alle reparierten Fahrzeuge anzeigen
-     */
     public void printReparierteFahrzeuge() {
         System.out.println("========== REPARIERTE FAHRZEUGE ==========");
         boolean found = false;
@@ -80,9 +63,6 @@ public class Garage {
         System.out.println();
     }
 
-    /**
-     * Alle nicht reparierten Fahrzeuge anzeigen
-     */
     public void printNichtReparierteFahrzeuge() {
         System.out.println("========== NICHT REPARIERTE FAHRZEUGE ==========");
         boolean found = false;
@@ -98,9 +78,6 @@ public class Garage {
         System.out.println();
     }
 
-    /**
-     * Fahrzeug basierend auf Kundennummer als repariert markieren
-     */
     public void markierAlsRepariert(String kundennummer) {
         Fahrzeug fahrzeug = sucheNachKundennummer(kundennummer);
         if (fahrzeug != null) {

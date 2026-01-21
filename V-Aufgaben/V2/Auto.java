@@ -1,7 +1,3 @@
-/**
- * Subklasse Auto
- * Zusätzliche Attribute: Anzahl der Türen, Trunk-Volumen (in Litern)
- */
 public class Auto extends Fahrzeug {
     private int anzahlTueren;
     private int trunkVolumen;

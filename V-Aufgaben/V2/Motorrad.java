@@ -1,7 +1,3 @@
-/**
- * Subklasse Motorrad
- * Zusätzliche Attribute: Hat Seitenwagen (ja/nein), Hubraum (in ccm)
- */
 public class Motorrad extends Fahrzeug {
     private boolean hatSeitenwagen;
     private int hubraum;

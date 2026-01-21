@@ -1,7 +1,3 @@
-/**
- * Subklasse Lastwagen
- * Zusätzliche Attribute: Max. Zuladung (in kg), Anzahl der Achsen
- */
 public class Lastwagen extends Fahrzeug {
     private int maxZuladung;
     private int anzahlAchsen;

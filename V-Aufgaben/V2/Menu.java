@@ -1,8 +1,5 @@
 import java.util.Scanner;
 
-/**
- * Menu-Klasse mit einfacher Benutzeroberfläche für die Garage-App
- */
 public class Menu {
     private Garage garage;
     private Scanner scanner;
@@ -12,9 +9,6 @@ public class Menu {
         this.scanner = new Scanner(System.in);
     }
 
-    /**
-     * Initialisiert die Garage mit Test-Daten
-     */
     public void initializeData() {
         garage.addFahrzeug(new Auto("Toyota", "KD001", true, 4, 450));
         garage.addFahrzeug(new Auto("BMW", "KD002", false, 2, 380));
@@ -24,9 +18,6 @@ public class Menu {
         garage.addFahrzeug(new Lastwagen("MAN", "KD006", false, 20000, 4));
     }
 
-    /**
-     * Zeigt das Hauptmenü an
-     */
     public void showMenu() {
         boolean running = true;
         while (running) {
@@ -78,9 +69,6 @@ public class Menu {
         scanner.close();
     }
 
-    /**
-     * Hilfsmethode: Nach Kundennummer suchen
-     */
     private void sucheNachKundennummer() {
         System.out.print("Geben Sie die Kundennummer ein: ");
         String kundennummer = scanner.nextLine();
@@ -94,18 +82,12 @@ public class Menu {
         System.out.println();
     }
 
-    /**
-     * Hilfsmethode: Nach Marke suchen
-     */
     private void sucheNachMarke() {
         System.out.print("Geben Sie die Marke ein: ");
         String marke = scanner.nextLine();
         garage.sucheNachMarke(marke);
     }
 
-    /**
-     * Hilfsmethode: Fahrzeug als repariert markieren
-     */
     private void markierAlsRepariert() {
         System.out.print("Geben Sie die Kundennummer des Fahrzeugs ein: ");
         String kundennummer = scanner.nextLine();
