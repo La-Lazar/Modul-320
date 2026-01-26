@@ -1,6 +1,6 @@
-# Sequenzdiagramm — Use Case: `Starter` zeichnet das Bild (V2)
+# Sequenzdiagramm — Use Case: `Starter` zeichnet das Bild (D2)
 
-Use-Case: Der Benutzer (über `Starter.main`) initialisiert das Bild und ruft `draw()` auf. Das Diagramm zeigt die Objekterzeugung und die Reihenfolge der Methodenaufrufe (inkl. Zeichen-/Erase-Delegation an `Canvas`).
+Use-Case: Der Benutzer (über `Starter.main`) initialisiert das Bild und ruft `draw()` auf. Das Diagramm zeigt die Objekterzeugung und die Reihenfolge der Methodenaufrufe (inkl. Zeichen-/Erase-Delegation an `Canvas`). Die Cloud besteht aus 3 Kreisen und delegiert das Zeichnen.
 
 ```mermaid
 sequenceDiagram
@@ -52,18 +52,28 @@ sequenceDiagram
     Picture->>Sun: makeVisible()
     Sun->>Canvas: draw(this, color, Ellipse)
 
-    %% Wolke erzeugen und animieren
+    %% Wolke erzeugen und animieren (besteht aus 3 Kreisen)
     Picture->>Cloud: new Cloud()
     Picture->>Cloud: changeColor(gray)
+    Picture->>Cloud: changeSize(80)
     Picture->>Cloud: makeVisible()
-    Cloud->>Canvas: draw(this, color, RoundRectangle)
+    Cloud->>Canvas: draw(circle1, color, Ellipse)
+    Cloud->>Canvas: draw(circle2, color, Ellipse)
+    Cloud->>Canvas: draw(circle3, color, Ellipse)
 
+    Picture->>Cloud: moveAcrossPicture()
+    activate Cloud
     loop Cloud animation: 400 steps
         Cloud->>Cloud: moveHorizontal(1)
-        Cloud->>Canvas: erase(this)
-        Cloud->>Canvas: draw(this, color, RoundRectangle)
+        Cloud->>Canvas: erase(circle1)
+        Cloud->>Canvas: erase(circle2)
+        Cloud->>Canvas: erase(circle3)
+        Cloud->>Canvas: draw(circle1, color, Ellipse)
+        Cloud->>Canvas: draw(circle2, color, Ellipse)
+        Cloud->>Canvas: draw(circle3, color, Ellipse)
         Canvas->>Canvas: wait(5ms)
     end
+    deactivate Cloud
 
     deactivate Picture
 ```

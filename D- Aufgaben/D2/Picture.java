@@ -59,13 +59,9 @@ public class Picture
 
         cloud = new Cloud();
         cloud.changeColor("gray");
+        cloud.changeSize(80);
         cloud.makeVisible();
-        // move cloud slowly from left to right across the picture; after each step
-        // redraw the sun so it stays on top and remains visible
-        for(int i = 0; i < 400; i++) {
-            cloud.moveHorizontal(1);
-            Canvas.getCanvas().wait(5);
-        }
+        cloud.moveAcrossPicture();
     }
 
     /**

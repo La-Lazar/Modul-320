@@ -4,24 +4,32 @@
  */
 public class Cloud
 {
-    private int width;
-    private int height;
     private int xPosition;
     private int yPosition;
     private String color;
     private boolean isVisible;
+    private final Circle circle1;
+    private final Circle circle2;
+    private final Circle circle3;
+    private int diameter1;
+    private int diameter2;
+    private int diameter3;
 
     /**
      * Create a new cloud at default position with default color.
      */
     public Cloud()
     {
-        width = 140;
-        height = 60;
         xPosition =  -160; // start further off the left edge
         yPosition =  40;   // near the top
         color = "gray"; // cloud color set to gray per request
         isVisible = false;
+        diameter1 = 40;
+        diameter2 = 50;
+        diameter3 = 40;
+        circle1 = new Circle();
+        circle2 = new Circle();
+        circle3 = new Circle();
     }
 
     /**
@@ -142,14 +150,14 @@ public class Cloud
 
     /**
      * Change the size to the new size (in pixels). Size must be >= 0.
-     * @param newWidth the new width of the cloud
-     * @param newHeight the new height of the cloud
+     * @param newSize the new size of the cloud circles
      */
-    public void changeSize(int newWidth, int newHeight)
+    public void changeSize(int newSize)
     {
         erase();
-        width = newWidth;
-        height = newHeight;
+        diameter1 = newSize;
+        diameter2 = newSize + 10;
+        diameter3 = newSize;
         draw();
     }
 
@@ -164,11 +172,24 @@ public class Cloud
         draw();
     }
 
+    /**
+     * Move the cloud across the picture from left to right.
+     */
+    public void moveAcrossPicture()
+    {
+        for(int i = 0; i < 400; i++) {
+            moveHorizontal(1);
+            Canvas.getCanvas().wait(5);
+        }
+    }
+
     private void draw()
     {
         if(isVisible) {
             Canvas canvas = Canvas.getCanvas();
-            canvas.draw(this, color, new java.awt.geom.RoundRectangle2D.Double(xPosition, yPosition, width, height, height/2, height/2));
+            canvas.draw(circle1, color, new java.awt.geom.Ellipse2D.Double(xPosition, yPosition, diameter1, diameter1));
+            canvas.draw(circle2, color, new java.awt.geom.Ellipse2D.Double(xPosition + 30, yPosition - 10, diameter2, diameter2));
+            canvas.draw(circle3, color, new java.awt.geom.Ellipse2D.Double(xPosition + 60, yPosition, diameter3, diameter3));
             canvas.wait(10);
         }
     }
@@ -177,7 +198,9 @@ public class Cloud
     {
         if(isVisible) {
             Canvas canvas = Canvas.getCanvas();
-            canvas.erase(this);
+            canvas.erase(circle1);
+            canvas.erase(circle2);
+            canvas.erase(circle3);
         }
     }
 }
