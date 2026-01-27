@@ -10,11 +10,11 @@ public class PasswordValidator {
             throw new PasswordException("Passwort muss mindestens 8 Zeichen lang sein.");
         }
 
-        if (!password.matches(".*\\d.*")) {
+        if (!password.chars().anyMatch(Character::isDigit)) {
             throw new NoNumberException();
         }
 
-        if (!password.matches(".*[A-Z].*")) {
+        if (!password.chars().anyMatch(Character::isUpperCase)) {
             throw new NoUppercaseException();
         }
     }
