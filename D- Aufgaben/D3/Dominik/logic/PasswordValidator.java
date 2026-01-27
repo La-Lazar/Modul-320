@@ -1,21 +1,40 @@
 package logic;
 
-import exception.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PasswordValidator {
+    private List<PasswordRule> rules;
 
-    public void validate(String password) throws PasswordException {
+    public PasswordValidator(List<PasswordRule> rules) {
+        this.rules = rules;
+    }
 
-        if (password.length() < 8) {
-            throw new PasswordException("Passwort muss mindestens 8 Zeichen lang sein.");
+    public static PasswordValidator defaultRules() {
+        List<PasswordRule> defaultRules = new ArrayList<>();
+        defaultRules.add(new MinLengthRule(8));
+        defaultRules.add(new NumberRule());
+        defaultRules.add(new UppercaseRule());
+        return new PasswordValidator(defaultRules);
+    }
+
+    public List<String> validate(String password) {
+        List<String> errors = new ArrayList<>();
+
+        for (PasswordRule rule : rules) {
+            if (!rule.isValid(password)) {
+                errors.add(rule.getErrorMessage());
+            }
         }
 
-        if (!password.chars().anyMatch(Character::isDigit)) {
-            throw new NoNumberException();
-        }
+        return errors;
+    }
 
-        if (!password.chars().anyMatch(Character::isUpperCase)) {
-            throw new NoUppercaseException();
-        }
+    public boolean isValid(String password) {
+        return validate(password).isEmpty();
+    }
+
+    public List<PasswordRule> getRules() {
+        return rules;
     }
 }
