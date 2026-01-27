@@ -1,1 +1,1 @@
-![alt text](image.png)
+![[Pasted image 20260127092354.png]]
