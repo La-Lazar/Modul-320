@@ -43,7 +43,7 @@ public class GameBoard {
         }
     }
 
-    public void movePlayer(int dx, int dy) {
+    public void movePlayer(int dx, int dy) throws InvalidMoveException {
         int newX = playerX + dx;
         int newY = playerY + dy;
 
@@ -62,6 +62,8 @@ public class GameBoard {
             playerX = newX;
             playerY = newY;
             board[playerY][playerX] = '@';
+        } else {
+            throw new InvalidMoveException("Bewegung außerhalb des Spielfelds: (" + newX + ", " + newY + ")");
         }
     }
 

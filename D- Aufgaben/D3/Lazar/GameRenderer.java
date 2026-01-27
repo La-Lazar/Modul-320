@@ -1,6 +1,4 @@
-/**
- * Frontend: Rendert das Spielfeld als String.
- */
+
 public class GameRenderer {
 
     public String renderToString(GameBoard board) {
